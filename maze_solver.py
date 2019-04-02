@@ -67,14 +67,15 @@ def solve(row,col):
 	if (row == len(maze)-1) and (col == len(maze)-1):
 		print("solved")
 		done = True;
-	if (row != 0) and (not done):
-		done = solve(row - 1, col)
+	if (col != len(maze)-1) and (not done):
+		done = solve(row, col + 1)
 	if (row != len(maze)-1) and (not done):
 		done = solve(row + 1, col)
 	if (col != 0) and (not done):
 		done = solve(row, col - 1)
-	if (col != len(maze)-1) and (not done):
-		done = solve(row, col + 1)
+	if (row != 0) and (not done):
+		done = solve(row - 1, col)
+
 	if (not done):
 		maze[row][col] = 3
 	return done
